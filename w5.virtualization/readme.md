@@ -97,11 +97,16 @@ The transmission of a network packet follows a strictly controlled five-step seq
 
 VM scheduling is the process by which a hypervisor manages the distribution of physical CPU resources among multiple virtual machines. Rather than just running the machines, the hypervisor acts as a central coordinator that determines how much processing power each VM receives. The architecture relies on mapping virtual CPUs (vCPUs) to specific physical processor cores. This abstraction allows the hypervisor to manage privileged commands and tasks depending on the type of virtualization used (Full or Paravirtualization). A critical feature of this mapping is **performance isolation**. Шf a specific physical CPU becomes overloaded, only the vCPUs directly tied to that core will experience a slowdown. Other physical cores and their respective VMs remain unaffected.
 
+<img width="950" height="674" alt="1" src="https://github.com/user-attachments/assets/09cc79ac-e7bd-4d36-a485-fdfefc985ec5" />
+
+
 ## Virtual CPU (vCPU) Multiplexing
 
 Virtual CPU multiplexing is a technique that allows multiple virtual machines to share the same physical processor, leading to significantly more efficient resource utilization. The core logic of this approach is to move away from **Separate VM Sizing**, where each machine is allocated resources based on its individual peak demand (S1 and S2). 
 
 In contrast, **VM Multiplexing** consolidates these fluctuating workloads into a shared physical pool. The hypervisor leverages the fact that different virtual machines have different peak timing; as a result, the total capacity required (S3) is less than or equal to the sum of the individual peaks (S3≤S1+S2).
+
+<img width="790" height="515" alt="2" src="https://github.com/user-attachments/assets/f2de1edf-dc50-4346-8f64-c20f20f019b0" />
 
 ## Virtual Machine Encapsulation
 
@@ -110,6 +115,9 @@ A primary advantage of virtualization is VM Encapsulation, which allows an entir
 The encapsulation model enables the use of Snapshots and Clones, which captures the current state of the virtual machine, allowing restoration to a point in time. This functionality allows for fast system provisioning, backup, and remote mirroring.
 
 As mentioned in the lecture, the 'create once, run anywhere' capability simplifies the distribution of pre-configured applications and virtual appliances.
+
+![server_file_export_diagram (1)](https://github.com/user-attachments/assets/671179d2-3ff8-4de0-b335-3f906a24aeaf)
+
 
 ## Virtual Machine Image Compatibility
 
